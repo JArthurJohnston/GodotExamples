@@ -23,6 +23,7 @@ func _process(delta):
 		if distance < distance_threshold:
 			path.remove(0)
 		else:
-			var vector = (target - current_position).normalized()
-			move_and_slide(Vector3(vector.x, 0, vector.z) * SPEED * delta, UP)
+			var direction = target - current_position
+			direction = direction.normalized()
+			move_and_slide(Vector3(direction.x, 0, direction.z) * SPEED * delta, UP)
 
