@@ -3,10 +3,6 @@ extends Spatial
 # var a = 2
 # var b = "text"
 
-func _init():
-	print('Initialized')
-	pass
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	add_to_group("NavPoints")

@@ -12,7 +12,7 @@ func _ready():
 
 func move_to_nav_point():
 	var navPoints = get_tree().get_nodes_in_group("NavPoints")
-	var target: Spatial = navPoints[3]
+	var target: Spatial = navPoints[0]
 	path = navigator.get_simple_path(global_transform.origin, target.global_transform.origin)
 
 func _process(delta):
