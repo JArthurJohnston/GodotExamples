@@ -15,15 +15,13 @@ func move_to_nav_point():
 	var target: Spatial = navPoints[3]
 	path = navigator.get_simple_path(global_transform.origin, target.global_transform.origin)
 
-func _process(delta):
+func _physics_process(delta):
 	if path.size() > 0:
 		var target = path[0]
 		var current_position = global_transform.origin
-		var distance = current_position.distance_to(target)
-		if distance < distance_threshold:
+		var direction = (target - current_position)
+		if current_position.distance_to(target) < 0.2:
 			path.remove(0)
 		else:
-			var direction = target - current_position
-			direction = direction.normalized()
-			move_and_slide(Vector3(direction.x, 0, direction.z) * SPEED * delta, UP)
+			move_and_slide(direction.normalized() * SPEED * delta, UP)
 

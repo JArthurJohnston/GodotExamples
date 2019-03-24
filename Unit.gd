@@ -16,6 +16,7 @@ func _physics_process(delta):
 		if current_position.distance_to(target) < 0.2:
 			path.remove(0)
 		else:
+			look_at(target, UP);
 			move_and_slide(direction.normalized() * move_speed * delta, UP)
 
 func move_to(target_pos):

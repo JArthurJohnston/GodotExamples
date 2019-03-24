@@ -3,6 +3,9 @@ extends Camera
 
 const ray_length = 1000
 
+func _process(delta):
+	pass
+
 func _input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == 1:
 		var from = project_ray_origin(event.position)
