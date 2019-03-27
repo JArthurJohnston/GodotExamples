@@ -2,7 +2,7 @@ extends "res://Scripts/FSM/States/AbstractState.gd"
 
 var target
 const ARRIVAL_KEY = 'ARRIVED_AT_TARGET'
-const ARRIVAL_THRESHOLD = 0.75
+const ARRIVAL_THRESHOLD = 2
 
 func identifier():
 	return "PATROLING"

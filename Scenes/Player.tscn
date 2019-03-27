@@ -22,10 +22,8 @@ shape = SubResource( 1 )
 
 [node name="Spatial2" type="Spatial" parent="."]
 
-[node name="Spatial" type="Spatial" parent="Spatial2"]
+[node name="MeshInstance2" type="MeshInstance" parent="Spatial2"]
 transform = Transform( 0.536489, 0, 0, 0, 0.322329, 0, 0, 0, 0.263428, 0, 0.814069, 0.733337 )
-
-[node name="MeshInstance" type="MeshInstance" parent="Spatial2/Spatial"]
 mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
 
