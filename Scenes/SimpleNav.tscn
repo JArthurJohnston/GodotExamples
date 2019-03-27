@@ -11,21 +11,21 @@ agent/radius = 1.18
 
 [sub_resource type="PlaneMesh" id=2]
 
-[sub_resource type="SpatialMaterial" id=8]
+[sub_resource type="SpatialMaterial" id=3]
 albedo_color = Color( 0.247059, 0.4, 0.298039, 1 )
 
-[sub_resource type="ConvexPolygonShape" id=12]
+[sub_resource type="ConvexPolygonShape" id=4]
 points = PoolVector3Array( 1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, -1 )
 
-[sub_resource type="CubeMesh" id=3]
+[sub_resource type="CubeMesh" id=5]
 
-[sub_resource type="ConvexPolygonShape" id=11]
+[sub_resource type="ConvexPolygonShape" id=6]
 points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1 )
 
-[sub_resource type="ConvexPolygonShape" id=13]
+[sub_resource type="ConvexPolygonShape" id=7]
 points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1 )
 
-[sub_resource type="ConvexPolygonShape" id=14]
+[sub_resource type="ConvexPolygonShape" id=8]
 points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1 )
 
 [node name="Spatial" type="Spatial"]
@@ -40,44 +40,44 @@ navmesh = SubResource( 1 )
 editor/display_folded = true
 transform = Transform( 20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0 )
 mesh = SubResource( 2 )
-material/0 = SubResource( 8 )
+material/0 = SubResource( 3 )
 
 [node name="StaticBody" type="StaticBody" parent="Navigation/NavigationMeshInstance/Floor"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Navigation/NavigationMeshInstance/Floor/StaticBody"]
-shape = SubResource( 12 )
+shape = SubResource( 4 )
 
 [node name="Box" type="MeshInstance" parent="Navigation/NavigationMeshInstance"]
 editor/display_folded = true
 transform = Transform( 6.44265, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.563422, 2.82246 )
-mesh = SubResource( 3 )
+mesh = SubResource( 5 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Navigation/NavigationMeshInstance/Box"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Navigation/NavigationMeshInstance/Box/StaticBody"]
-shape = SubResource( 11 )
+shape = SubResource( 6 )
 
 [node name="Box3" type="MeshInstance" parent="Navigation/NavigationMeshInstance"]
 editor/display_folded = true
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 3.38917, 0, 0.563422, 13.8486 )
-mesh = SubResource( 3 )
+mesh = SubResource( 5 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Navigation/NavigationMeshInstance/Box3"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Navigation/NavigationMeshInstance/Box3/StaticBody"]
-shape = SubResource( 13 )
+shape = SubResource( 7 )
 
 [node name="Box2" type="MeshInstance" parent="Navigation/NavigationMeshInstance"]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 4.30085, 0, 0.563422, -11.3342 )
-mesh = SubResource( 3 )
+mesh = SubResource( 5 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Navigation/NavigationMeshInstance/Box2"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Navigation/NavigationMeshInstance/Box2/StaticBody"]
-shape = SubResource( 14 )
+shape = SubResource( 8 )
 
 [node name="NavPoints" type="Spatial" parent="Navigation/NavigationMeshInstance"]
 editor/display_folded = true

@@ -20,6 +20,9 @@ func _physics_process(delta):
 	current_state.handle_physics_process(subject, delta)
 	check_for_state_change(delta)
 
+# This assumes the first state it finds that will change is the correct one
+# meaning the order that state & transition nodes are added is important
+# this may change in the future if this becomes a headache
 func check_for_state_change(delta):
 	for each_transition in current_state.transitions:
 		if each_transition.will_change(values):
