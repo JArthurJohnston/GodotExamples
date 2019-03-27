@@ -2,6 +2,7 @@ extends "res://Scripts/FSM/States/AbstractState.gd"
 
 var target
 const ARRIVAL_KEY = 'ARRIVED_AT_TARGET'
+const ARRIVAL_THRESHOLD = 0.75
 
 func identifier():
 	return "PATROLING"
@@ -15,7 +16,7 @@ func on_exit(subject):
 	target = null
 	
 func handle_process(subject, delta):
-	if subject.global_transform.origin.distance_to(target) <= 0.5:
+	if subject.global_transform.origin.distance_to(target) <= ARRIVAL_THRESHOLD:
 		machine.set_value(ARRIVAL_KEY, true)
 	
 func find_random_nav_point():

@@ -38,31 +38,11 @@ albedo_color = Color( 0.207843, 0.419608, 0.717647, 1 )
 
 [node name="Spatial" type="Spatial"]
 
-[node name="NavPoints" type="Node" parent="."]
-editor/display_folded = true
-
-[node name="NavPoint" parent="NavPoints" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8369, 0, 0 )
-
-[node name="NavPoint6" parent="NavPoints" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8369, 0, -13.1748 )
-
-[node name="NavPoint2" parent="NavPoints" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8016, 0, 0 )
-
-[node name="NavPoint5" parent="NavPoints" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8016, 0, -13.8431 )
-
-[node name="NavPoint3" parent="NavPoints" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7197, 0, 13.0301 )
-
-[node name="NavPoint4" parent="NavPoints" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9965, 0, 13.0301 )
-
 [node name="Navigation" type="Navigation" parent="."]
 
 [node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Navigation"]
 editor/display_folded = true
+transform = Transform( 1.63631, 0, 0, 0, 1.63631, 0, 0, 0, 1.63631, 0, 0, 0 )
 navmesh = SubResource( 1 )
 
 [node name="Floor" type="MeshInstance" parent="Navigation/NavigationMeshInstance"]
@@ -90,8 +70,28 @@ transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 4.30085, 0, 0.563422, -11.3342 )
 mesh = SubResource( 3 )
 material/0 = null
 
+[node name="NavPoints" type="Spatial" parent="Navigation/NavigationMeshInstance"]
+
+[node name="NavPoint" parent="Navigation/NavigationMeshInstance/NavPoints" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8369, 0, 0 )
+
+[node name="NavPoint6" parent="Navigation/NavigationMeshInstance/NavPoints" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8369, 0, -13.1748 )
+
+[node name="NavPoint2" parent="Navigation/NavigationMeshInstance/NavPoints" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8016, 0, 0 )
+
+[node name="NavPoint5" parent="Navigation/NavigationMeshInstance/NavPoints" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8016, 0, -13.8431 )
+
+[node name="NavPoint3" parent="Navigation/NavigationMeshInstance/NavPoints" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7197, 0, 13.0301 )
+
+[node name="NavPoint4" parent="Navigation/NavigationMeshInstance/NavPoints" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9965, 0, 13.0301 )
+
 [node name="Unit" type="KinematicBody" parent="Navigation"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.78055, 0, 8.89845 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0315, 0, 13.2254 )
 script = ExtResource( 2 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Navigation/Unit"]
@@ -124,6 +124,6 @@ script = ExtResource( 6 )
 script = ExtResource( 7 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.569814, 0.821774, 0, -0.821774, 0.569814, 0.591142, 13.749, 15.0617 )
+transform = Transform( 1, 0, 0, 0, 0.569814, 0.821774, 0, -0.821774, 0.569814, 0.591142, 23.4875, 27.7063 )
 script = ExtResource( 8 )
 
