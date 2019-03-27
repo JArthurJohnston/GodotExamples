@@ -1,17 +1,22 @@
 extends KinematicBody
 
-onready var navigator :Navigation = get_parent()
+var navigator :Navigation
 
 var path = []
 const move_speed = 400
 const UP = Vector3(0,1,0)
+var velocity: Vector3
+var rotation_speed = 100
+var rotation_angle = 0
 
-onready var nav = get_parent()
 func _ready():
 	add_to_group("units")
-	move_to_nav_point()
 
 func _physics_process(delta):
+	handle_movement(delta)
+	handle_rotation(delta)
+
+func handle_movement(delta):
 	if path.size() > 0:
 		var target = path[0]
 		var current_position = global_transform.origin
@@ -19,13 +24,26 @@ func _physics_process(delta):
 		if current_position.distance_to(target) < 0.2:
 			path.remove(0)
 		else:
-			look_at(target, UP);
-			move_and_slide(direction.normalized() * move_speed * delta, UP)
+			look_at(target, UP); # make a rotate towards method to replace this
+			velocity = move_and_slide(direction.normalized() * move_speed * delta, UP)
+	
+func handle_rotation(delta):
+	if(is_rotating()):
+		var degrees = rotation_speed * delta
+		rotate_y(deg2rad(degrees))
+		rotation_angle -= degrees
 
-func move_to(target_pos):
-	path = nav.get_simple_path(global_transform.origin, target_pos)
+func get_navigator():
+	if(navigator == null):
+		navigator = get_parent()
+	return navigator
 
-func move_to_nav_point():
-	var navPoints = get_tree().get_nodes_in_group("NavPoints")
-	var target: Spatial = navPoints[3]
-	path = navigator.get_simple_path(global_transform.origin, target.global_transform.origin)
+func move_to(target_pos: Vector3):
+	path = get_navigator().get_simple_path(global_transform.origin, target_pos)
+
+func rotate_over_time(angle):
+	rotation_angle = angle
+	pass
+	
+func is_rotating():
+	return rotation_angle > 0
