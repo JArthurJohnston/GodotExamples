@@ -1,13 +1,9 @@
 extends Spatial
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
-# Called when the node enters the scene tree for the first time.
+static func get_random(caller: Node):
+	var navPoints = caller.get_tree().get_nodes_in_group("NavPoints")
+	randomize()
+	return navPoints[rand_range(0, navPoints.size() - 1)]
+
 func _ready():
 	add_to_group("NavPoints")
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

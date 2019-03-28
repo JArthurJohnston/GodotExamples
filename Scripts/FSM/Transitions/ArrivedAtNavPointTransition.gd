@@ -1,4 +1,5 @@
 extends "res://Scripts/FSM/Transitions/AbstractTransition.gd"
+const PatrollingState = preload("../States/PatrolingState.gd")
 
 const ARRIVAL_KEY = 'ARRIVED_AT_TARGET'
 const PATROLLING_STATE_ID = 'PATROLING'
