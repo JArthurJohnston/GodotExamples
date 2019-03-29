@@ -1,10 +1,14 @@
 extends "res://Scripts/FSM/States/AbstractState.gd"
+var player_manager = preload("res://Scripts/PlayerManager.gd")
+
+var target
 
 func entered():
-	# look at the player
-	# set player location as target
-	# move towards target
-	pass
+	print('chasing')
+	var subject = get_subject()
+	target = subject.visible_player_position()
+	subject.face_target(target)
+	subject.move_to(target)
 
 func handle_process(delta):
 	# raycast to player

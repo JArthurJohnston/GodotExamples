@@ -26,9 +26,8 @@ func _process(delta):
 # this may change in the future if this becomes a headache
 func handle_any_state_change(delta):
 	for each_transition in current_state.transitions:
-		var transition_state_id = each_transition.changing_state()
-		if transition_state_id != null && transition_state_id != current_state.identifier():
-			transition_to(transition_state_id)
+		if each_transition.will_change():
+			transition_to(each_transition.target_state())
 			return
 
 func transition_to(state_id):

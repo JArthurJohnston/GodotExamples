@@ -10,7 +10,10 @@ func get_subject():
 func _ready():
 	state = get_parent()
 
-func changing_state():
+func will_change():
+	pass
+	
+func target_state():
 	pass
 
 
