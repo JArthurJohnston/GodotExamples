@@ -2,8 +2,7 @@ extends Node
 
 var subject
 var states
-var current_state 
-var values = {}
+var current_state
 
 func get_subject():
 	if(subject == null):
@@ -31,20 +30,11 @@ func handle_any_state_change(delta):
 		if transition_state_id != null && transition_state_id != current_state.identifier():
 			transition_to(transition_state_id)
 			return
-		#if each_transition.will_change(values):
-		#	transition_to(each_transition.new_state_id())
-		#	return
 
 func transition_to(state_id):
 	current_state.on_exit(subject)
 	current_state = find_state(state_id)
 	current_state.on_enter(subject)
-
-func get_value(key):
-	return values[key]
-
-func set_value(key, value):
-	values[key] = value
 
 func find_state(identifier):
 	for each_state in states:
