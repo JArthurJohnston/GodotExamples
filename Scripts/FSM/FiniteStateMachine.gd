@@ -38,6 +38,5 @@ func transition_to(state_id):
 
 func find_state(identifier):
 	for each_state in states:
-		print(each_state.identifier(), identifier)
 		if each_state.identifier() == identifier:
 			return each_state

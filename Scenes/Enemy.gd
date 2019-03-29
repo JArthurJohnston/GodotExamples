@@ -1,5 +1,6 @@
 extends KinematicBody
 const Player = preload("Player.gd") # Relative path
+const Raycast = preload("res://Scripts/Raycast.gd")
 
 const FIELD_OF_VIEW = 50
 const move_speed = 600
@@ -28,8 +29,7 @@ func _physics_process(delta):
 func can_see_player():
 	if(player_is_in_field_of_view()):
 		var player = playerManager.get_player()
-		var space_state: PhysicsDirectSpaceState = get_world().get_direct_space_state()
-		var hit = space_state.intersect_ray(global_transform.origin, player.global_transform.origin)
+		var hit = Raycast.between(self, player)
 		if hit:
 			if hit.collider == player:
 				return true

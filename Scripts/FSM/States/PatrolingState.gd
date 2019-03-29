@@ -11,6 +11,5 @@ func entered():
 func exited():
 	target = null
 
-			
 func arrived_at_target():
 	return get_subject().global_transform.origin.distance_to(target) <= ARRIVAL_THRESHOLD
