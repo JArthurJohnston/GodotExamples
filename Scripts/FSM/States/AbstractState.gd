@@ -10,8 +10,8 @@ func get_subject():
 	return machine.get_subject()
 
 func _ready():
-	transitions = get_children()
 	machine = get_parent()
+	transitions = get_children()
 	
 func _process(delta):
 	if(is_current_state):
@@ -30,6 +30,9 @@ func on_exit(subject):
 	is_current_state = false
 	subject = null
 	exited()
+
+func identifier():
+	return get_script()
 	
 # Concrete implementations should override some or all of the following methods
 func entered():
@@ -46,6 +49,4 @@ func handle_physics_process(delta):
 	
 func will_change(dictionary):
 	pass
-	
-func identifier():
-	pass
+

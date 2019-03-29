@@ -1,8 +1,7 @@
 extends Node
 
 var subject
-onready var states = get_children()
-
+var states
 var current_state 
 var values = {}
 
@@ -14,6 +13,7 @@ func get_subject():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	subject = get_parent()
+	states = get_children()
 	current_state = states[0]
 	current_state.on_enter(subject)
 	# For now the FSM will assume the first state node is the default state
@@ -27,9 +27,13 @@ func _process(delta):
 # this may change in the future if this becomes a headache
 func handle_any_state_change(delta):
 	for each_transition in current_state.transitions:
-		if each_transition.will_change(values):
-			transition_to(each_transition.new_state_id())
+		var transition_state_id = each_transition.changing_state()
+		if transition_state_id != null && transition_state_id != current_state.identifier():
+			transition_to(transition_state_id)
 			return
+		#if each_transition.will_change(values):
+		#	transition_to(each_transition.new_state_id())
+		#	return
 
 func transition_to(state_id):
 	current_state.on_exit(subject)
@@ -44,5 +48,6 @@ func set_value(key, value):
 
 func find_state(identifier):
 	for each_state in states:
+		print(each_state.identifier(), identifier)
 		if each_state.identifier() == identifier:
 			return each_state
