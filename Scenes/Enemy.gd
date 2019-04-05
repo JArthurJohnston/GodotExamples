@@ -4,7 +4,6 @@ const Raycast = preload("res://Scripts/Raycast.gd")
 
 const FIELD_OF_VIEW = 45
 const move_speed = 600
-const UP = Vector3(0,1,0)
 const gravity = -9.8
 const rotation_speed = 300
 
@@ -20,10 +19,12 @@ func _ready():
 	starting_rotation = rotation
 	
 func _process(delta):
-	handle_rotation(delta)
+	# handle_rotation(delta)
+	pass
 
 func _physics_process(delta):
-	handle_movement(delta)
+	# handle_movement(delta)
+	pass
 
 func can_see_player():
 	return visible_player_position() != null
@@ -37,7 +38,8 @@ func visible_player_position():
 				return hit.position
 				
 func face_target(target):
-	look_at(target, UP)
+	look_at(target, Vector3.UP)
+	set_rotation(Vector3(starting_rotation.x, rotation.y, starting_rotation.z)) # locks rotation
 
 func handle_movement(delta):
 	if path.size() > 0:
@@ -52,9 +54,11 @@ func handle_movement(delta):
 			velocity.x = direction.x
 			velocity.y += gravity * delta
 			velocity.z = direction.z
-			velocity = move_and_slide(velocity, UP)
-		set_rotation(Vector3(starting_rotation.x, rotation.y, starting_rotation.z)) # locks rotation
-	
+			velocity = move_and_slide(velocity, Vector3.UP)
+			
+func is_moving():
+	return velocity > Vector3.ZERO
+
 func handle_rotation(delta):
 	if(is_rotating()):
 		var degrees = rotation_speed * delta

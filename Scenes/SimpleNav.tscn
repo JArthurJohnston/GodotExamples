@@ -101,7 +101,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7197, 0, 13.0301 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9965, 0, 13.0301 )
 
 [node name="Enemy" parent="Navigation" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -10.8933, 1.49539, 18.0661 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -13.4207, 1.49539, 14.2378 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, -0.000381997, -0.000305173, 0.000468416, 0.569611, 0.821914, -0.000140139, -0.821914, 0.569611, 0.591142, 23.4875, 27.7063 )

@@ -10,7 +10,15 @@ func entered():
 	subject.face_target(target)
 	subject.move_to(target)
 
+func exited():
+	print('not chasing')
+
 func handle_process(delta):
+	target = subject.visible_player_position()
+	if can_see_player():
+		#subject.face_target(target)
+		subject.move_to(target)
+		
 	# raycast to player
 	# if raycast hit
 		# move to raycast hit position
@@ -20,4 +28,5 @@ func handle_process(delta):
 		# raycast to player
 		#if no hit
 			# lost player
-	pass
+func can_see_player():
+	return target != null
